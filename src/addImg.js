@@ -14,13 +14,15 @@ import NightWind from "./img/NightWind.png";
 
 import search from "./img/search.png";
 
-import { fetchData } from "./getDataAPI";
+import { fetchCurrentData } from "./getDataAPI";
 import { renameWeatherCondition } from "./getDataAPI";
 import { submitButton } from "./index";
 
 // Adding an img according to weather condition and part of the day
 export async function addImage(cityInput) {
-  const { weatherConditionID, localTimeHour } = await fetchData(cityInput);
+  const { weatherConditionID, localTimeHour } = await fetchCurrentData(
+    cityInput
+  );
   const weatherCondition = renameWeatherCondition(weatherConditionID);
 
   const localTime = parseInt(localTimeHour, 10);

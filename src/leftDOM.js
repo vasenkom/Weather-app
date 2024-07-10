@@ -1,5 +1,5 @@
 import { getTodayDate, getCurrentDay } from "./date.js";
-import { fetchData } from "./getDataAPI.js";
+import { fetchCurrentData } from "./getDataAPI.js";
 import { addImage } from "./addImg.js";
 
 // Function to create and append DOM elements
@@ -43,7 +43,9 @@ export async function setLeftPartDOMContent(cityInput) {
   cityP.textContent = cityInput;
   dateP.innerHTML = `${currentDay},<br>${todayDate}`;
 
-  const { weatherConditionText, tempCelsius } = await fetchData(cityInput);
+  const { weatherConditionText, tempCelsius } = await fetchCurrentData(
+    cityInput
+  );
   weatherStateP.textContent = weatherConditionText;
   tempP.textContent = `${tempCelsius} °C`;
 
