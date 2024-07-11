@@ -1,4 +1,4 @@
-import { getTodayDate, getCurrentDay } from "./date.js";
+import { getTodayDate, getCurrentAndNextDays } from "./date.js";
 import { fetchCurrentData } from "./getDataAPI.js";
 import { addImage } from "./addImg.js";
 
@@ -34,7 +34,8 @@ export function addLeftPartDOM() {
 // Function to set content for the DOM elements
 export async function setLeftPartDOMContent(cityInput) {
   const todayDate = getTodayDate();
-  const currentDay = getCurrentDay();
+  const nextThreeDays = getCurrentAndNextDays();
+  const currentDay = nextThreeDays[0];
 
   const elements = addLeftPartDOM();
 
@@ -49,7 +50,10 @@ export async function setLeftPartDOMContent(cityInput) {
   weatherStateP.textContent = weatherConditionText;
   tempP.textContent = `${tempCelsius} °C`;
 
-  const imgSrc = await addImage(cityInput);
+  const { weatherConditionID, localTimeHour } = await fetchCurrentData(
+    cityInput
+  );
+  const imgSrc = await addImage(weatherConditionID, localTimeHour);
   weatherImg.src = imgSrc;
 }
 
