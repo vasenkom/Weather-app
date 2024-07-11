@@ -19,10 +19,10 @@ import { renameWeatherCondition } from "./getDataAPI";
 import { submitButton } from "./index";
 
 // Adding an img according to weather condition and part of the day
-export async function addImage(cityInput) {
-  const { weatherConditionID, localTimeHour } = await fetchCurrentData(
-    cityInput
-  );
+export async function addImage(weatherConditionID, localTimeHour) {
+  // const { weatherConditionID, localTimeHour } = await fetchCurrentData(
+  //   cityInput
+  // );
   const weatherCondition = renameWeatherCondition(weatherConditionID);
 
   const localTime = parseInt(localTimeHour, 10);
