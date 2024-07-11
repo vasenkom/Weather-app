@@ -9,7 +9,7 @@ export function getTodayDate() {
   return formatDate(new Date());
 }
 
-export function getCurrentDay() {
+export function getCurrentAndNextDays() {
   const weekday = [
     "Sunday",
     "Monday",
@@ -19,8 +19,15 @@ export function getCurrentDay() {
     "Friday",
     "Saturday",
   ];
-  const d = new Date();
-  let day = weekday[d.getDay()];
 
-  return day;
+  const days = [];
+  const d = new Date();
+
+  for (let i = 0; i < 4; i++) {
+    const currentDay = new Date(d);
+    currentDay.setDate(d.getDate() + i);
+    days.push(weekday[currentDay.getDay()]);
+  }
+
+  return days;
 }
