@@ -11,12 +11,12 @@ body {
 
 /* Left part only */
 .left {
-  width: 25%;
+  width: 30vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  height: 100vh;
 }
 .locationSearchForm {
   margin-top: 15px;
@@ -57,8 +57,8 @@ body {
 }
 .mainWeatherImg {
   margin-top: 20px;
-  width: 250px;
-  height: 250px;
+  max-width: 45vw;
+  max-height: 45vh;
 }
 .cityLeftP {
   margin-top: 20px;
@@ -77,7 +77,198 @@ body {
   text-align: center;
 }
 .right {
-  width: 75%;
-  background-color: 9#f6f6f8;
-  height: 100%;
+  width: 70vw;
+  background-color: #f6f6f8;
+  height: 100vh;
+}
+
+/* Right part only */
+.locationP,
+.todayHighlightsP {
+  margin-top: 15px;
+  margin-left: 20px;
+  font-size: 25px;
+}
+.thisWeekP {
+  margin-top: 7px;
+  margin-left: 20px;
+  font-size: 25px;
+}
+.weekDIV,
+.weekCard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.weekCard {
+  height: 20vh;
+}
+.todayHighlightsDIV {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  row-gap: 10px;
+}
+.weekDIV {
+  margin-top: 15px;
+  justify-content: space-evenly;
+}
+.weekCard,
+.todayHighlightsCard,
+.todayHighlightsCardUV {
+  background-color: white;
+  justify-content: center;
+  width: 22vw;
+}
+.weekCardTextDiv {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center;
+  justify-content: center; */
+  text-align: left;
+  font-size: 18px;
+  padding: 0 5px;
+  gap: 10px;
+}
+.weekCard img {
+  padding: 10px;
+  width: 125px;
+  height: 125px;
+}
+.todayHighlightsDIV {
+  margin-top: 15px;
+}
+.todayHighlightsCard,
+.todayHighlightsCardUV {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 20vh;
+  gap: 20px;
+}
+.todayHighlightsCardUV {
+  gap: 15px;
+}
+.todayHighlightsTitle {
+  padding-top: 10px;
+}
+.todayHighlightsTitle,
+.sunscreenReminder {
+  text-align: left;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.todayHighlightsValue {
+  text-align: center;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 952px) {
+  .left {
+    width: 35vw;
+  }
+  .right {
+    width: 65vw;
+    background-color: #f6f6f8;
+    height: 100%;
+  }
+  .weekDIV {
+    flex-direction: column;
+    gap: 15px;
+  }
+  .weekCard {
+    width: 50vw;
+    height: 35vh;
+  }
+  .locationP {
+    font-size: 35px;
+  }
+  .thisWeekP {
+    font-size: 35px;
+  }
+  .weekCard img {
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+  }
+  .todayHighlightsDIV {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    row-gap: 10px;
+  }
+  .todayHighlightsCard,
+  .todayHighlightsCardUV {
+    width: 50vw;
+    height: 25vh;
+    gap: 20px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .left {
+    width: 40vw;
+  }
+  .right {
+    width: 60vw;
+  }
+}
+@media only screen and (max-width: 565px) {
+  body {
+    flex-direction: column;
+  }
+  .left {
+    width: 100vw;
+    height: 100%;
+  }
+  .locationSearchForm {
+    margin-top: 20px;
+  }
+  .right {
+    width: 100vw;
+    height: 100%;
+  }
+  .weekCard {
+    width: 80vw;
+    height: 35vh;
+  }
+  .dateLeftP {
+    margin-bottom: 20px;
+  }
+  .weekCard img {
+    padding: 10px;
+    width: 125px;
+    height: 125px;
+  }
+  .mainWeatherImg {
+    margin-top: 20px;
+    max-width: 55vw;
+    max-height: 55vh;
+  }
+  .weekCard img {
+    padding: 10px;
+    width: 200px;
+    height: 200px;
+  }
+  .locationP,
+  .thisWeekP {
+    text-align: center;
+  }
+  .todayHighlightsCardUV,
+  .todayHighlightsCard {
+    width: 80vw;
+  }
+}
+@media only screen and (max-width: 321px) {
+  .todayHighlightsCardUV,
+  .todayHighlightsCard,
+  .weekCard {
+    width: 90vw;
+  }
+  .locationP,
+  .thisWeekP {
+    font-size: 25px;
+  }
 }
