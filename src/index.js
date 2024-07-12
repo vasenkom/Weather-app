@@ -18,12 +18,21 @@ submitButton.addEventListener("click", async (event) => {
 
   const cityInput = document.querySelector("#locationSearch").value;
 
-  const elementsOfLeft = addLeftPartDOM();
   cleanLeftDOM();
-  await setLeftPartDOMContent(cityInput, elementsOfLeft);
+  await setLeftPartDOMContent(cityInput);
 
-  // const elementsOfRight = addRightPartDOM();
-  // cleanRightDOM(elementsOfRight); // coming soon
   cleanRightDOM();
   await setRightPartDOMContent(cityInput);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  initialize("London");
+});
+
+async function initialize(defaultCity) {
+  cleanLeftDOM();
+  await setLeftPartDOMContent(defaultCity);
+
+  cleanRightDOM();
+  await setRightPartDOMContent(defaultCity);
+}
