@@ -13,7 +13,7 @@ Check out the live demo [here](https://raw.githack.com/vasenkom/Weather-app/main
 - **Today's Highlights**: See detailed information about today's weather, including:
   - UV Index
   - Feels Like Temperature
-  - Wind Speed (in km/h)
+  - Wind Speed (km/h)
   - Pressure
   - Air Quality (US EPA Index)
   - Visibility
