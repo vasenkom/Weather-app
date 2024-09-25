@@ -1,38 +1,35 @@
 export async function fetchCurrentData(cityInout) {
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/current.json?key=0dbcafa2b4e449eaa3d120341240707&q=${cityInout}&aqi=yes`,
+      `https://api.weatherapi.com/v1/current.json?key=a91d8c0080954a24929200531242509&q=${cityInout}&aqi=yes`,
       { mode: "cors" }
     );
 
-    // Error check
     if (!response.ok) {
       throw new Error(`Response status: failed to fetch current data`);
     }
 
     const APIData = await response.json();
 
-    console.log("Current temperature: " + APIData.current.temp_c); //debugging
+    console.log("Current temperature: " + APIData.current.temp_c);
 
-    const weatherConditionID = APIData.current.condition.code;
-    const localTimeHour = APIData.location.localtime
-      .split(" ")[1]
-      .split(":")[0];
+    const weatherConditionID = APIData.current.condition?.code || null;
+    const localTimeHour =
+      APIData.location?.localtime?.split(" ")[1]?.split(":")[0] || null;
 
-    // For right DOM cards
-    const uvIndex = APIData.current.uv; // Correcting uvIndex property access
-    const feelLike = APIData.current.feelslike_c;
-    const wind = APIData.current.wind_kph;
-    const windDirection = APIData.current.wind_dir;
-    const visibility = APIData.current.vis_km;
-    const airQuality = APIData.current.air_quality?.["us-epa-index"];
-    const pressure = APIData.current.pressure_mb;
+    const uvIndex = APIData.current.uv || null;
+    const feelLike = APIData.current.feelslike_c || null;
+    const wind = APIData.current.wind_kph || null;
+    const windDirection = APIData.current.wind_dir || null;
+    const visibility = APIData.current.vis_km || null;
+    const airQuality = APIData.current.air_quality?.["us-epa-index"] || null;
+    const pressure = APIData.current.pressure_mb || null;
 
-    console.log("Time " + localTimeHour); // debugging
+    console.log("Time " + localTimeHour);
 
     return {
-      weatherConditionText: APIData.current.condition.text,
-      tempCelsius: APIData.current.temp_c,
+      weatherConditionText: APIData.current.condition?.text || "No data",
+      tempCelsius: APIData.current.temp_c || null,
       weatherConditionID,
       localTimeHour,
       uvIndex,
@@ -45,47 +42,49 @@ export async function fetchCurrentData(cityInout) {
     };
   } catch (error) {
     console.error(error.message);
+    return null; // Indicate failure
   }
 }
 
 export async function fetchNextThreeDaysData(cityInout) {
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=0dbcafa2b4e449eaa3d120341240707&q=${cityInout}&days=4`,
+      `https://api.weatherapi.com/v1/forecast.json?key=a91d8c0080954a24929200531242509&q=${cityInout}&days=4`,
       { mode: "cors" }
     );
 
-    // Error check
     if (!response.ok) {
       throw new Error(`Response status: failed to fetch data for next 3 days`);
     }
 
     const forecastAPIData = await response.json();
 
-    const city = forecastAPIData.location.name;
-    const country = forecastAPIData.location.country;
+    const city = forecastAPIData.location?.name || "Unknown city";
+    const country = forecastAPIData.location?.country || "Unknown country";
 
-    // Card 1
-    const maxTempCard1 = forecastAPIData.forecast.forecastday[1].day.maxtemp_c;
-    const minTempCard1 = forecastAPIData.forecast.forecastday[1].day.mintemp_c;
+    const timeHourCardAll =
+      forecastAPIData.location?.localtime?.split(" ")[1]?.split(":")[0] || null;
+
+    const maxTempCard1 =
+      forecastAPIData.forecast.forecastday[1]?.day?.maxtemp_c || null;
+    const minTempCard1 =
+      forecastAPIData.forecast.forecastday[1]?.day?.mintemp_c || null;
     const conditionCodeCard1 =
-      forecastAPIData.forecast.forecastday[1].day.condition.code;
+      forecastAPIData.forecast.forecastday[1]?.day?.condition?.code || null;
 
-    const timeHourCardAll = forecastAPIData.location.localtime
-      .split(" ")[1]
-      .split(":")[0];
-
-    // Card 2
-    const maxTempCard2 = forecastAPIData.forecast.forecastday[2].day.maxtemp_c;
-    const minTempCard2 = forecastAPIData.forecast.forecastday[2].day.mintemp_c;
+    const maxTempCard2 =
+      forecastAPIData.forecast.forecastday[2]?.day?.maxtemp_c || null;
+    const minTempCard2 =
+      forecastAPIData.forecast.forecastday[2]?.day?.mintemp_c || null;
     const conditionCodeCard2 =
-      forecastAPIData.forecast.forecastday[2].day.condition.code;
+      forecastAPIData.forecast.forecastday[2]?.day?.condition?.code || null;
 
-    // Card 3
-    const maxTempCard3 = forecastAPIData.forecast.forecastday[3].day.maxtemp_c;
-    const minTempCard3 = forecastAPIData.forecast.forecastday[3].day.mintemp_c;
+    const maxTempCard3 =
+      forecastAPIData.forecast.forecastday[3]?.day?.maxtemp_c || null;
+    const minTempCard3 =
+      forecastAPIData.forecast.forecastday[3]?.day?.mintemp_c || null;
     const conditionCodeCard3 =
-      forecastAPIData.forecast.forecastday[3].day.condition.code;
+      forecastAPIData.forecast.forecastday[3]?.day?.condition?.code || null;
 
     return {
       timeHourCardAll,
@@ -103,6 +102,7 @@ export async function fetchNextThreeDaysData(cityInout) {
     };
   } catch (error) {
     console.error(error.message);
+    return null; // Indicate failure
   }
 }
 
