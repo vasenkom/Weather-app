@@ -4,7 +4,7 @@ A cute and minimalistic weather app that provides users with current weather con
 
 ## Demo
 
-Check out the live demo [here](https://raw.githack.com/vasenkom/Weather-app/main/dist/index.html).
+Check out the live demo [here](https://raw.githack.com/vasenkom/Weather-app/refs/heads/main/dist/index.html).
 
 ## Features
 
