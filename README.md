@@ -35,4 +35,4 @@ Weather data is fetched from [WeatherAPI](https://www.weatherapi.com/).
 
 ## What I have learned
 
-During the development of this Weather App, I practiced using asynchronous code with async and await, which enhanced my understanding of handling asynchronous operations in JavaScript. I trained on fetching data from WeatherAPI, learning how to effectively manage API requests and display (weather) data dynamically. 
+During the development of this Weather App, I practiced using asynchronous code with `async` and `await`, which enhanced my understanding of handling asynchronous operations in JavaScript. I trained on fetching data from WeatherAPI, learning how to effectively manage API requests and display (weather) data dynamically. 
