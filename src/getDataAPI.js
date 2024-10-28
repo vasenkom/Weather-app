@@ -49,12 +49,12 @@ export async function fetchCurrentData(cityInout) {
 export async function fetchNextThreeDaysData(cityInout) {
   try {
     const response = await fetch(
-      `https://api.weatherapi.com/v1/forecast.json?key=a91d8c0080954a24929200531242509&q=${cityInout}&days=4`,
+      `https://api.weatherapi.com/v1/forecast.json?key=a91d8c0080954a24929200531242509&q=${cityInout}&days=5`,
       { mode: "cors" }
     );
 
     if (!response.ok) {
-      throw new Error(`Response status: failed to fetch data for next 3 days`);
+      throw new Error(`Response status: failed to fetch data for next 5 days`);
     }
 
     const forecastAPIData = await response.json();
@@ -80,11 +80,12 @@ export async function fetchNextThreeDaysData(cityInout) {
       forecastAPIData.forecast.forecastday[2]?.day?.condition?.code || null;
 
     const maxTempCard3 =
-      forecastAPIData.forecast.forecastday[3]?.day?.maxtemp_c || null;
+      forecastAPIData.forecast.forecastday[3]?.day?.maxtemp_c || "Sever issue";
     const minTempCard3 =
-      forecastAPIData.forecast.forecastday[3]?.day?.mintemp_c || null;
+      forecastAPIData.forecast.forecastday[3]?.day?.mintemp_c || "Sever issue";
     const conditionCodeCard3 =
-      forecastAPIData.forecast.forecastday[3]?.day?.condition?.code || null;
+      forecastAPIData.forecast.forecastday[3]?.day?.condition?.code ||
+      "Sever issue";
 
     return {
       timeHourCardAll,
